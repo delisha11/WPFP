@@ -1,0 +1,1212 @@
+/* Reset: verwijder standaard margin, padding en zorg dat padding
+   meegeteld wordt in de breedte van elk element (box-sizing) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS-variabelen (custom properties) — hiermee kan je kleuren op
+   één plek aanpassen en ze overal in het bestand hergebruiken */
+:root {
+    --background: #ffffff;
+    --text: #0d0d0d;
+    --gray: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #d4380a;
+    --light: #f7f7f7;
+}
+
+/* Zorgt voor vloeiend scrollen bij ankerlinkjes (#sectie) */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Centreert de inhoud en begrenst de breedte op 1000px */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* ==================== */
+/* NAVIGATIE */
+/* ==================== */
+
+/* sticky: de header blijft bovenaan plakken bij het scrollen */
+header {
+    border-bottom: 1px solid var(--border);
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Zorgt dat de header boven andere elementen ligt */
+}
+
+/* Flexbox om de nav-items naast elkaar en verticaal gecentreerd te zetten */
+nav {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--gray);
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+}
+
+/* Bezochte links blijven dezelfde kleur houden */
+nav a:visited {
+    color: var(--gray);
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--text);
+}
+
+/* Onderstreping bij de actieve pagina in de navigatie */
+nav a.active {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 3px;
+}
+
+
+/* ==================== */
+/* ALGEMENE TEKST */
+/* ==================== */
+
+/* calc() zorgt dat de main altijd minstens de volledige
+   viewport hoogte min de header en footer vult */
+main {
+    min-height: calc(100vh - 140px);
+}
+
+.page {
+    padding: 70px 0;
+}
+
+/* Kleine accenttekst boven titels, in monospace voor de tech-look */
+.label {
+    color: var(--accent);
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+h1,
+h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Intro-tekst onder de paginatitel */
+.intro {
+    color: var(--gray);
+    font-size: 19px;
+    max-width: 650px;
+}
+
+
+/* ==================== */
+/* KNOPPEN */
+/* ==================== */
+
+/* flex-wrap: wrap zodat knoppen naar een nieuwe rij gaan op kleine schermen */
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.button:visited {
+    color: var(--text);
+}
+
+/* Primaire knop: donkere achtergrond, witte tekst */
+.button.primary {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+.button.primary:visited {
+    color: white;
+}
+
+.button:hover {
+    border-color: var(--text);
+}
+
+/* Hover op primaire knop wisselt naar de accentkleur */
+.button.primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+
+/* ==================== */
+/* HERO */
+/* ==================== */
+
+/* Hero-sectie: tekst en foto naast elkaar met flexbox */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: flex-start;
+    margin-bottom: 90px;
+}
+
+/* flex: 1 zorgt dat de tekst alle beschikbare ruimte pakt */
+.hero-text {
+    flex: 1;
+}
+
+/* object-fit: cover voorkomt vervorming bij een vaste breedte/hoogte.
+   filter: grayscale maakt de foto zwart-wit */
+.photo {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+
+/* ==================== */
+/* SECTIES */
+/* ==================== */
+
+.section {
+    border-top: 1px solid var(--border);
+    padding-top: 45px;
+    margin-bottom: 70px;
+}
+
+/* Twee-kolommen grid: smalle linkerkant voor de sectietitel,
+   brede rechterkant voor de inhoud */
+.section-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 50px;
+}
+
+.section-title {
+    font-family: "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+/* Vier gelijke kolommen voor de vaardigheden */
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.skills h3 {
+    font-family: "Courier New", monospace;
+    color: var(--accent);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.skills ul {
+    list-style: none;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* Tijdlijn als grid: jaargetal links, beschrijving rechts */
+.timeline {
+    list-style: none;
+}
+
+.timeline li {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+}
+
+.year {
+    font-family: "Courier New", monospace;
+    color: var(--gray);
+    font-size: 12px;
+}
+
+
+/* ==================== */
+/* FILTERS */
+/* ==================== */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 35px 0;
+}
+
+.filter {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 7px 12px;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.filter:hover {
+    border-color: var(--text);
+}
+
+
+/* ==================== */
+/* PROJECTEN */
+/* ==================== */
+
+/* Twee kolommen; de 1px gap met border-achtergrond creëert
+   dunne lijntjes tussen de kaarten */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+}
+
+
+/*
+    De projectkaart is een <a>.
+    Daarom zetten we hier de standaard browser-opmaak
+    van links volledig uit.
+*/
+
+.project {
+    display: block;
+    background: white;
+    padding: 25px;
+
+    color: var(--text);
+    text-decoration: none;
+}
+
+
+/* Een project dat al bezocht is blijft zwart */
+.project:visited {
+    color: var(--text);
+    text-decoration: none;
+}
+
+
+/* Hover verandert alleen de achtergrond */
+.project:hover {
+    background: var(--light);
+    color: var(--text);
+    text-decoration: none;
+}
+
+
+/*
+    Zorg ervoor dat alle tekst binnen de projectkaart
+    geen blauwe of paarse linkkleur krijgt.
+*/
+
+.project h2,
+.project p,
+.project span {
+    text-decoration: none;
+}
+
+.project h2 {
+    color: var(--text);
+}
+
+.project h2:visited {
+    color: var(--text);
+}
+
+
+/* Projectafbeelding: position relative zodat het pijltje
+   absoluut gepositioneerd kan worden bovenop de afbeelding */
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.project img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease; /* Zachte zoom-animatie bij hover */
+}
+
+.project:hover img {
+    transform: scale(1.02);
+}
+
+
+/* Pijltje rechtsboven op afbeelding:
+   opacity en transform animeren in bij hover (zie hieronder) */
+
+.project-arrow {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    color: var(--text);
+
+    font-size: 18px;
+
+    opacity: 0;
+    transform: translateX(-5px); /* Start iets naar links voor de slide-in animatie */
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Bij hover: pijltje wordt zichtbaar en schuift naar zijn eindpositie */
+.project:hover .project-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* Projecttekst */
+
+.project-content {
+    padding-top: 0;
+}
+
+.project h2 {
+    margin-bottom: 8px;
+}
+
+.project .tagline {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* :not(.tagline) selecteert alleen de beschrijvende paragrafen,
+   niet de tagline die al apart gestyled is */
+.project-content > p:not(.tagline) {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* Status-label (bijv. "schoolopdracht") */
+
+.status {
+    display: inline-block;
+
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+
+    padding: 4px 7px;
+    margin-bottom: 12px;
+
+    background: var(--light);
+    color: var(--gray);
+}
+
+
+/* Tags onderaan een projectkaart */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: var(--light);
+    color: var(--text);
+
+    padding: 4px 7px;
+
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+}
+
+
+/* "Bekijk project →" tekst onderaan de kaart */
+
+.project-link-text {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: var(--text);
+    text-decoration: none;
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+}
+
+.project:hover .project-link-text {
+    text-decoration: underline;
+}
+
+
+/* ==================== */
+/* BLOG */
+/* ==================== */
+
+/* Uitgelichte berichten in twee kolommen, zelfde grid-truc als project-grid */
+.featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+}
+
+.post {
+    background: white;
+    padding: 30px;
+}
+
+.post:hover {
+    background: var(--light);
+}
+
+/* Categorie-label met accentkleur als achtergrond */
+.category {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 3px 7px;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    margin-bottom: 12px;
+}
+
+.post h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.post p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.date {
+    color: var(--gray);
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+}
+
+.post-list {
+    list-style: none;
+}
+
+.post-list li {
+    border-bottom: 1px solid var(--border);
+    padding: 22px 5px;
+}
+
+/* color: inherit: de link erft de tekstkleur van het bovenliggende element
+   zodat hij niet blauw/paars wordt */
+.post-list a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-list a:visited {
+    color: inherit;
+}
+
+.post-list h2 {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    margin: 5px 0;
+}
+
+.post-list p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* ==================== */
+/* FOOTER */
+/* ==================== */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+}
+
+/* Flexbox om copyright links en navigatielinks naast elkaar te zetten */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+footer p,
+footer a {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    color: var(--gray);
+}
+
+footer a {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+footer a:visited {
+    color: var(--gray);
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+
+/* ==================== */
+/* CSS FILTERS (projectenpagina) */
+/* ==================== */
+
+/*
+    De filterwerking gebruikt radio buttons + de CSS general sibling selector (~).
+    De radio buttons zelf worden verborgen; de <label> elementen fungeren als knoppen.
+    Wanneer een radio button aangevinkt is, worden projecten gefilterd via CSS
+    zonder dat er JavaScript nodig is.
+*/
+
+/* Radio buttons verbergen */
+#filter-all,
+#filter-cpp,
+#filter-java{
+    display: none;
+}
+
+
+/* Actieve filter krijgt een donkere achtergrond.
+   De ~ selector selecteert alle broer/zus-elementen die ná de input komen. */
+#filter-all:checked ~ .filters .filter[for="filter-all"],
+#filter-cpp:checked ~ .filters .filter[for="filter-cpp"],
+#filter-java:checked ~ .filters .filter[for="filter-java"],
+#filter-python:checked ~ .filters .filter[for="filter-python"] {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+
+/* C++ filter: verberg alle projecten die NIET de klasse project-cpp hebben */
+#filter-cpp:checked ~ .project-grid .project:not(.project-cpp) {
+    display: none;
+}
+
+
+/* Java filter */
+#filter-java:checked ~ .project-grid .project:not(.project-java) {
+    display: none;
+}
+
+
+/* Python filter */
+#filter-python:checked ~ .project-grid .project:not(.project-python) {
+    display: none;
+}
+
+
+/* ==================== */
+/* MOBIEL */
+/* ==================== */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 45px 0;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    /* Hero stapelt verticaal op kleine schermen */
+    .hero {
+        display: block;
+    }
+
+    .photo {
+        margin-top: 30px;
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Section-grid gaat van twee kolommen naar één kolom */
+    .section-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Skills, projecten en featured posts gaan naar twee kolommen */
+    .skills,
+    .project-grid,
+    .featured {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    nav ul {
+        gap: 18px;
+    }
+
+    /* Footer stapelt verticaal */
+    .footer-content {
+        display: block;
+    }
+
+    footer .links {
+        margin-top: 15px;
+    }
+
+    footer a {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}
+
+
+/* Op de kleinste schermen gaat alles naar één kolom */
+@media (max-width: 480px) {
+
+    .skills,
+    .project-grid,
+    .featured {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
+
+/* ==================== */
+/* PROJECT DETAIL PAGINA */
+/* ==================== */
+
+.project-detail {
+    padding-bottom: 80px;
+}
+
+
+/* Terug-link met pijltje, uitgelijnd via inline-flex */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 45px;
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+
+    color: var(--gray);
+    text-decoration: none;
+}
+
+.back-link:visited {
+    color: var(--gray);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+
+/* Grote hero-afbeelding bovenaan de detailpagina.
+   overflow: hidden knipt de afbeelding af als hij groter is dan de container. */
+.project-detail-image {
+    width: 100%;
+    height: 390px;
+
+    overflow: hidden;
+
+    background: var(--light);
+
+    margin-bottom: 50px;
+}
+
+.project-detail-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* Project header */
+
+.project-detail-header {
+    max-width: 850px;
+    margin-bottom: 65px;
+}
+
+/* Meta-rij: status-label en jaargetal naast elkaar */
+.project-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.project-year {
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.project-detail-header h1 {
+    font-family: Georgia, serif;
+    font-size: 55px;
+    line-height: 1.1;
+
+    margin-bottom: 15px;
+}
+
+.project-detail-tagline {
+    color: var(--gray);
+    font-size: 20px;
+
+    max-width: 700px;
+
+    margin-bottom: 0;
+}
+
+
+/* Informatieblok met links (GitHub, PDF) */
+.detail-box {
+    background: var(--light);
+
+    padding: 25px;
+
+    margin-bottom: 60px;
+}
+
+.detail-box h2 {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    color: var(--gray);
+
+    margin-bottom: 18px;
+}
+
+.detail-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+/* Knoppen binnen projectpagina (donker, met hover naar accentkleur) */
+.detail-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    background: var(--text);
+    border: 1px solid var(--text);
+
+    color: white;
+    text-decoration: none;
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+}
+
+.detail-button:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.detail-button:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Detailsecties (Tech stack, Uitdaging, etc.):
+   smalle titelbalk links, brede inhoud rechts via grid */
+.detail-section {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    gap: 50px;
+
+    border-top: 1px solid var(--border);
+
+    padding: 40px 0;
+
+    max-width: 1000px;
+}
+
+.detail-section-title {
+    font-family: "Courier New", monospace;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    font-size: 11px;
+
+    color: var(--gray);
+}
+
+.detail-section-content {
+    max-width: 700px;
+}
+
+.detail-section-content p {
+    font-size: 17px;
+    line-height: 1.75;
+
+    margin-bottom: 20px;
+}
+
+/* :last-child verwijdert de margin onder de laatste alinea */
+.detail-section-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Tech stack tags op de detailpagina */
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.detail-tag {
+    background: var(--light);
+
+    padding: 7px 10px;
+
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+
+    color: var(--text);
+}
+
+
+/* Resultaat-sectie: linker accentlijn voor visuele nadruk */
+.detail-result .detail-section-content {
+    border-left: 2px solid var(--accent);
+
+    padding-left: 25px;
+}
+
+
+/* Terug-link onderaan de detailpagina */
+.detail-bottom-link {
+    border-top: 1px solid var(--border);
+
+    padding-top: 30px;
+
+    margin-top: 30px;
+}
+
+.detail-bottom-link .back-link {
+    margin-bottom: 0;
+}
+
+
+/* ==================== */
+/* PROJECT DETAIL MOBIEL */
+/* ==================== */
+
+@media (max-width: 700px) {
+
+    .project-detail {
+        padding-top: 45px;
+        padding-bottom: 60px;
+    }
+
+    .project-detail-image {
+        height: 240px;
+        margin-bottom: 35px;
+    }
+
+    .project-detail-header {
+        margin-bottom: 45px;
+    }
+
+    .project-detail-header h1 {
+        font-size: 42px;
+    }
+
+    .project-detail-tagline {
+        font-size: 17px;
+    }
+
+    /* Detail-secties gaan van twee kolommen naar één kolom op mobiel */
+    .detail-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        padding: 30px 0;
+    }
+
+    .detail-section-content p {
+        font-size: 16px;
+    }
+
+    .detail-result .detail-section-content {
+        padding-left: 18px;
+    }
+
+    .detail-box {
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+/* ==================== */
+/* BLOG FILTERS */
+/* ==================== */
+
+/*
+    Zelfde techniek als de projectfilters: verborgen radio buttons,
+    zichtbare labels als knoppen, en CSS ~ selector voor filtering.
+*/
+
+/* Radio buttons zelf verbergen */
+#blog-filter-all,
+#blog-filter-cpp,
+#blog-filter-java,
+#blog-filter-challenge {
+    display: none;
+}
+
+/* Labels gedragen zich als knoppen */
+.filters .filter {
+    cursor: pointer;
+}
+
+/* Actieve blogfilter */
+#blog-filter-all:checked ~ .filters label[for="blog-filter-all"],
+#blog-filter-cpp:checked ~ .filters label[for="blog-filter-cpp"],
+#blog-filter-java:checked ~ .filters label[for="blog-filter-java"],
+#blog-filter-challenge:checked ~ .filters label[for="blog-filter-challenge"] {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+/* ==================== */
+/* C++ FILTER */
+/* ==================== */
+
+#blog-filter-cpp:checked ~ .blog-content .blog-post:not(.blog-cpp) {
+    display: none;
+}
+
+/* ==================== */
+/* JAVA FILTER */
+/* ==================== */
+
+#blog-filter-java:checked ~ .blog-content .blog-post:not(.blog-java) {
+    display: none;
+}
+
+/* ==================== */
+/* CHALLENGE FILTER */
+/* ==================== */
+
+#blog-filter-challenge:checked ~ .blog-content .blog-post:not(.blog-challenge) {
+    display: none;
+}
+
+/* ==================== */
+/* ALLES FILTER */
+/* ==================== */
+
+#blog-filter-all:checked ~ .blog-content .blog-post {
+    display: block;
+}
+
+/* display: list-item herstelt het juiste gedrag voor <li> elementen
+   die eerder op block werden gezet door de "alles" regel hierboven */
+#blog-filter-all:checked ~ .blog-content .post-list .blog-post,
+#blog-filter-cpp:checked ~ .blog-content .post-list .blog-post,
+#blog-filter-java:checked ~ .blog-content .post-list .blog-post,
+#blog-filter-challenge:checked ~ .blog-content .post-list .blog-post {
+    display: list-item;
+}
+
+/* Voor de featured artikelen (die zijn geen <li>, dus display: block) */
+#blog-filter-all:checked ~ .blog-content .featured .blog-post,
+#blog-filter-cpp:checked ~ .blog-content .featured .blog-post,
+#blog-filter-java:checked ~ .blog-content .featured .blog-post,
+#blog-filter-challenge:checked ~ .blog-content .featured .blog-post {
+    display: block;
+}
+/* ==================== */
+/* BLOG KLIKBARE BERICHTEN */
+/* ==================== */
+
+/* De hele blogpost is een klikbare link; kleur en decoratie worden
+   gereset zodat het er niet als een standaard hyperlink uitziet */
+.blog-post-link {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.blog-post-link:visited {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.blog-post-link:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.post-list li a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.post-list li a:visited {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.post-list li a:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* ==================== */
+/* BLOG DETAIL PAGINA */
+/* ==================== */
+
+.blog-detail {
+    padding-bottom: 80px;
+}
+
+/* max-width begrenst de breedte voor leesbaarheid (artikel-layout) */
+.blog-detail article {
+    max-width: 850px;
+}
+
+.blog-detail h1 {
+    font-family: Georgia, serif;
+    font-size: 55px;
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 45px;
+}
+
+/* Iets smallere contentkolom dan het artikel zelf, voor een
+   comfortabele regellengte (max ~75 tekens per regel) */
+.blog-detail-content {
+    max-width: 720px;
+}
+
+.blog-detail-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.blog-detail-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+
+    .blog-detail {
+        padding-top: 45px;
+        padding-bottom: 60px;
+    }
+
+    .blog-detail h1 {
+        font-size: 42px;
+        margin-bottom: 35px;
+    }
+
+    .blog-detail-content p {
+        font-size: 16px;
+    }
+
+}
