@@ -1,0 +1,598 @@
+/* ==================== */
+/* BASIS */
+/* ==================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #ffffff;
+    --text: #0d0d0d;
+    --gray: #6b6b6b;
+    --border: #e5e5e5;
+    --accent: #d4380a;
+    --light: #f7f7f7;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* ==================== */
+/* NAVIGATIE */
+/* ==================== */
+
+header {
+    border-bottom: 1px solid var(--border);
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--gray);
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+}
+
+nav a:visited {
+    color: var(--gray);
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--text);
+}
+
+nav a.active {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 3px;
+}
+
+
+/* ==================== */
+/* ALGEMENE TEKST */
+/* ==================== */
+
+main {
+    min-height: calc(100vh - 140px);
+}
+
+.page {
+    padding: 70px 0;
+}
+
+.label {
+    color: var(--accent);
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+h1,
+h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.intro {
+    color: var(--gray);
+    font-size: 19px;
+    max-width: 650px;
+}
+
+
+/* ==================== */
+/* KNOPPEN */
+/* ==================== */
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.button:visited {
+    color: var(--text);
+}
+
+.button.primary {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+.button.primary:visited {
+    color: white;
+}
+
+.button:hover {
+    border-color: var(--text);
+}
+
+.button.primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+
+/* ==================== */
+/* WHOAMI / HERO */
+/* ==================== */
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: flex-start;
+    margin-bottom: 90px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.photo {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+
+/* ==================== */
+/* SECTIES */
+/* ==================== */
+
+.section {
+    border-top: 1px solid var(--border);
+    padding-top: 45px;
+    margin-bottom: 70px;
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 50px;
+}
+
+.section-title {
+    font-family: "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+
+/* ==================== */
+/* VAARDIGHEDEN */
+/* ==================== */
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.skills h3 {
+    font-family: "Courier New", monospace;
+    color: var(--accent);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.skills ul {
+    list-style: none;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* ==================== */
+/* TIJDLIJN */
+/* ==================== */
+
+.timeline {
+    list-style: none;
+}
+
+.timeline li {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+}
+
+.year {
+    font-family: "Courier New", monospace;
+    color: var(--gray);
+    font-size: 12px;
+}
+
+
+/* ==================== */
+/* PROJECT FILTERS */
+/* ==================== */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 35px 0;
+}
+
+.filter {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 7px 12px;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.filter:hover {
+    border-color: var(--text);
+}
+
+
+/* Radio buttons verbergen */
+
+#filter-all,
+#filter-cpp,
+#filter-java {
+    display: none;
+}
+
+
+/* Actieve filter */
+
+#filter-all:checked ~ .filters .filter[for="filter-all"],
+#filter-cpp:checked ~ .filters .filter[for="filter-cpp"],
+#filter-java:checked ~ .filters .filter[for="filter-java"] {
+    background: var(--text);
+    color: white;
+    border-color: var(--text);
+}
+
+
+/* Projecten filteren */
+
+#filter-cpp:checked ~ .project-grid .project:not(.project-cpp) {
+    display: none;
+}
+
+#filter-java:checked ~ .project-grid .project:not(.project-java) {
+    display: none;
+}
+
+
+/* ==================== */
+/* PROJECTEN */
+/* ==================== */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+}
+
+.project {
+    display: block;
+    background: white;
+    padding: 25px;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.project:visited {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.project:hover {
+    background: var(--light);
+    color: var(--text);
+    text-decoration: none;
+}
+
+.project h2 {
+    color: var(--text);
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.project img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease;
+}
+
+.project:hover img {
+    transform: scale(1.02);
+}
+
+
+/* Pijltje op afbeelding */
+
+.project-arrow {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    color: var(--text);
+
+    font-size: 18px;
+
+    opacity: 0;
+    transform: translateX(-5px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.project:hover .project-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* Projecttekst */
+
+.project h2 {
+    margin-bottom: 8px;
+}
+
+.project .tagline {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.project-content > p:not(.tagline) {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* Status */
+
+.status {
+    display: inline-block;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    padding: 4px 7px;
+    margin-bottom: 12px;
+    background: var(--light);
+    color: var(--gray);
+}
+
+
+/* Tags */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: var(--light);
+    color: var(--text);
+    padding: 4px 7px;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+}
+
+
+/* Bekijk project */
+
+.project-link-text {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+}
+
+.project:hover .project-link-text {
+    text-decoration: underline;
+}
+
+
+/* ==================== */
+/* BLOG */
+/* ==================== */
+
+.category {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 3px 7px;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    margin-bottom: 12px;
+}
+
+.date {
+    color: var(--gray);
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+}
+
+
+/* ==================== */
+/* FOOTER */
+/* ==================== */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+footer p,
+footer a {
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    color: var(--gray);
+}
+
+footer a {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+footer a:visited {
+    color: var(--gray);
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+
+/* ==================== */
+/* MOBIEL */
+/* ==================== */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 45px 0;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .hero {
+        display: block;
+    }
+
+    .photo {
+        margin-top: 30px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .section-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .skills,
+    .project-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    nav ul {
+        gap: 18px;
+    }
+
+    .footer-content {
+        display: block;
+    }
+
+    footer .links {
+        margin-top: 15px;
+    }
+
+    footer a {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .skills,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
